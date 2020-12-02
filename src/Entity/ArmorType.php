@@ -29,9 +29,15 @@ class ArmorType
      */
     private $raidOffers;
 
+    /**
+     * @ORM\OneToMany(targetEntity=RaidBoost::class, mappedBy="armorType")
+     */
+    private $raidBoosts;
+
     public function __construct()
     {
         $this->raidOffers = new ArrayCollection();
+        $this->raidBoosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,36 @@ class ArmorType
             // set the owning side to null (unless already changed)
             if ($raidOffer->getArmorType() === $this) {
                 $raidOffer->setArmorType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RaidBoost[]
+     */
+    public function getRaidBoosts(): Collection
+    {
+        return $this->raidBoosts;
+    }
+
+    public function addRaidBoost(RaidBoost $raidBoost): self
+    {
+        if (!$this->raidBoosts->contains($raidBoost)) {
+            $this->raidBoosts[] = $raidBoost;
+            $raidBoost->setArmorType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRaidBoost(RaidBoost $raidBoost): self
+    {
+        if ($this->raidBoosts->removeElement($raidBoost)) {
+            // set the owning side to null (unless already changed)
+            if ($raidBoost->getArmorType() === $this) {
+                $raidBoost->setArmorType(null);
             }
         }
 

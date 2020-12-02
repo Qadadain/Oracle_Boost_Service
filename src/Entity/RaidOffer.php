@@ -61,9 +61,15 @@ class RaidOffer
      */
     private $raidOffers;
 
+    /**
+     * @ORM\OneToMany(targetEntity=RaidBoost::class, mappedBy="raidOffer")
+     */
+    private $raidBoosts;
+
     public function __construct()
     {
         $this->raidOffers = new ArrayCollection();
+        $this->raidBoosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +185,36 @@ class RaidOffer
             // set the owning side to null (unless already changed)
             if ($raidOffer->getRaidOffer() === $this) {
                 $raidOffer->setRaidOffer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RaidBoost[]
+     */
+    public function getRaidBoosts(): Collection
+    {
+        return $this->raidBoosts;
+    }
+
+    public function addRaidBoost(RaidBoost $raidBoost): self
+    {
+        if (!$this->raidBoosts->contains($raidBoost)) {
+            $this->raidBoosts[] = $raidBoost;
+            $raidBoost->setRaidOffer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRaidBoost(RaidBoost $raidBoost): self
+    {
+        if ($this->raidBoosts->removeElement($raidBoost)) {
+            // set the owning side to null (unless already changed)
+            if ($raidBoost->getRaidOffer() === $this) {
+                $raidBoost->setRaidOffer(null);
             }
         }
 
