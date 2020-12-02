@@ -1,12 +1,24 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Oracle{% endblock %}</title>
+    {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}{% endblock %}
+    <header>
+        {% block header %}
+            {% include 'Components/navbar.html.twig' %}
+        {% endblock %}
+    </header>
+</head>
+<body>
+{% block body %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+</body>
+{{ encore_entry_script_tags('app') }}
+{% block javascripts %}{% endblock %}
 </html>
