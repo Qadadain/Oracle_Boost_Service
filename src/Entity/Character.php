@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CharacterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,10 +42,25 @@ class Character
     private $classe;
 
     /**
+     * @ORM\OneToMany(targetEntity=DungeonBoost::class, mappedBy="tank")
+     */
+    private $dungeonBoosts;
+
+    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="characters")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->dungeonBoosts = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->pseudo;
+    }
 
     public function getId(): ?int
     {
@@ -94,6 +111,36 @@ class Character
     public function setClasse(?Classe $classe): self
     {
         $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DungeonBoost[]
+     */
+    public function getDungeonBoosts(): Collection
+    {
+        return $this->dungeonBoosts;
+    }
+
+    public function addDungeonBoost(DungeonBoost $dungeonBoost): self
+    {
+        if (!$this->dungeonBoosts->contains($dungeonBoost)) {
+            $this->dungeonBoosts[] = $dungeonBoost;
+            $dungeonBoost->setTank($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDungeonBoost(DungeonBoost $dungeonBoost): self
+    {
+        if ($this->dungeonBoosts->removeElement($dungeonBoost)) {
+            // set the owning side to null (unless already changed)
+            if ($dungeonBoost->getTank() === $this) {
+                $dungeonBoost->setTank(null);
+            }
+        }
 
         return $this;
     }
