@@ -58,12 +58,11 @@ class CharacterFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::CHARACTERS as $data) {
             $character = new Character();
             $userId = random_int(1, 7);
-            $classeId = random_int(1, 12);
             $character->setPseudo($data['pseudo'])
                 ->setILvl($data['iLvl'])
                 ->setComment($data['comment']);
              $character->setUser($manager->find('App:User', $userId));
-             $character->setClasse($manager->find('App:Classe', $classeId));
+             $character->setClasse($manager->find('App:Classe', random_int(1, 7)));
             $manager->persist($character);
         }
 

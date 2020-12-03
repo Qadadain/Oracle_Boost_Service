@@ -16,7 +16,7 @@ class InformationBoostFixtures extends Fixture
         ],
     ];
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::INFORMATIONS as $data) {
             $informationBoost = new InformationBoost();

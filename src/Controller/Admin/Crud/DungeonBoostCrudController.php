@@ -23,17 +23,17 @@ class DungeonBoostCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('customer'),
-            IntegerField::new('amount'),
+            TextField::new('customer', 'Client'),
+            IntegerField::new('amount', 'Montant'),
             TextField::new('comment'),
             DateField::new('date'),
-            AssociationField::new('armorType'),
+            AssociationField::new('armorType', 'Armure'),
             AssociationField::new('dungeon'),
-            AssociationField::new('keyDifficulty'),
+            AssociationField::new('keyDifficulty', 'Clé'),
             AssociationField::new('tank'),
             AssociationField::new('heal'),
-            AssociationField::new('dpsOne'),
-            AssociationField::new('dpsTwo'),
+            AssociationField::new('dpsOne', 'Dps'),
+            AssociationField::new('dpsTwo', 'Dps'),
         ];
     }
 
