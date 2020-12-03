@@ -25,7 +25,7 @@ class Classe
     private $name;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $color;
 
@@ -33,6 +33,11 @@ class Classe
      * @ORM\OneToMany(targetEntity=Character::class, mappedBy="classe")
      */
     private $characters;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $linkImage;
 
     public function __construct()
     {
@@ -61,12 +66,12 @@ class Classe
         return $this;
     }
 
-    public function getColor(): ?int
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    public function setColor(?int $color): self
+    public function setColor(?string $color): self
     {
         $this->color = $color;
 
@@ -99,6 +104,18 @@ class Classe
                 $character->setClasse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLinkImage(): ?string
+    {
+        return $this->linkImage;
+    }
+
+    public function setLinkImage(?string $linkImage): self
+    {
+        $this->linkImage = $linkImage;
 
         return $this;
     }

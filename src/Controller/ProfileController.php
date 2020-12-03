@@ -20,7 +20,6 @@ class ProfileController extends AbstractController
     {
         $user = $this->getUser();
         $characters = $entityManager->getRepository('App:Character')->findBy(['user' => $user]);
-
         return $this->render('profile/index.html.twig', [
             'user' => $user,
             'characters' => $characters,

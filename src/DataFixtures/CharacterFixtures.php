@@ -62,7 +62,7 @@ class CharacterFixtures extends Fixture implements DependentFixtureInterface
                 ->setILvl($data['iLvl'])
                 ->setComment($data['comment']);
              $character->setUser($manager->find('App:User', $userId));
-             $character->setClasse($manager->find('App:Classe', random_int(1, 7)));
+             $character->setClasse($manager->find('App:Classe', random_int(1,11)));
             $manager->persist($character);
         }
 
