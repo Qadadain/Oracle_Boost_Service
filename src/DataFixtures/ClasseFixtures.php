@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Classe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class ClasseFixtures extends Fixture
@@ -48,6 +49,7 @@ class ClasseFixtures extends Fixture
 
     ];
 
+
     public function load(ObjectManager $manager)
     {
         foreach (self::CLASSES as $data) {
@@ -59,4 +61,5 @@ class ClasseFixtures extends Fixture
 
         $manager->flush();
     }
+
 }
