@@ -37,6 +37,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linktoRoute('Back To OBS', 'fa fa-home', 'home');
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Character', 'fas fa-list', Character::class);
         yield MenuItem::linkToCrud('Dungeon Boost', 'fas fa-list', DungeonBoost::class);
