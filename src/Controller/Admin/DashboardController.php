@@ -38,14 +38,14 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Armor Type', 'fas fa-list', ArmorType::class);
         yield MenuItem::linkToCrud('Character', 'fas fa-list', Character::class);
-        yield MenuItem::linkToCrud('Classe', 'fas fa-list', Classe::class);
         yield MenuItem::linkToCrud('Dungeon Boost', 'fas fa-list', DungeonBoost::class);
-        yield MenuItem::linkToCrud('Dungeon', 'fas fa-list', Dungeon::class);
-        yield MenuItem::linkToCrud('Information Boost', 'fas fa-list', InformationBoost::class);
-        yield MenuItem::linkToCrud('Key Difficulty', 'fas fa-list', KeyDifficulty::class);
         yield MenuItem::linkToCrud('Raid Boost', 'fas fa-list', RaidBoost::class);
         yield MenuItem::linkToCrud('Raid Offer', 'fas fa-list', RaidOffer::class);
+        yield MenuItem::linkToCrud('Information Boost', 'fas fa-list', InformationBoost::class);
+        yield MenuItem::linkToCrud('Armor Type', 'fas fa-list', ArmorType::class);
+        yield MenuItem::linkToCrud('Classe', 'fas fa-list', Classe::class);
+        yield MenuItem::linkToCrud('Dungeon', 'fas fa-list', Dungeon::class);
+        yield MenuItem::linkToCrud('Key Difficulty', 'fas fa-list', KeyDifficulty::class);
     }
 }

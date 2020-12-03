@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class InformationBoostCrudController extends AbstractCrudController
@@ -23,7 +24,7 @@ class InformationBoostCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             IntegerField::new('amountDungeonBoost'),
             IntegerField::new('stackArmorAmount'),
-            TextField::new('messageInformation'),
+            TextEditorField::new('messageInformation'),
         ];
     }
 
