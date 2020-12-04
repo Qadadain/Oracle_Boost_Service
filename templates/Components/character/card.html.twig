@@ -13,6 +13,13 @@
                 </div>
                 <p class="card-text">{{ character.comment }}</p>
                 <a  target="_blank" href="https://raider.io/characters/eu/archimonde/{{ character.pseudo }}"><img class="raider-icon" src="{{ asset('build/images/raiderio.png') }}" alt=""></a>
+                {% if app.user is same as(character.user) and app.request.attributes.get('_route') is same as('profile_index') %}
+                    <span>
+                                <a href="{{ path('character_edit', {'id': character.id}) }}"><i class="material-icons edit-sheet">
+                                    edit
+                                </i></a>
+                            </span>
+                {% endif %}
             </div>
         </div>
     </div>
