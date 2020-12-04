@@ -3,39 +3,25 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 <h1 class="mt-5">Profil de {{ user.pseudo }}</h1>
             </div>
             <div class="col-12 mt-5 d-flex justify-content-around">
-                <div class="col6">
+                <div class="col-6">
                     <p>Pseudo : {{ user.pseudo }}</p>
                     <p>Email : {{ user.email }}</p>
                 </div>
-                <div class="col6">
+                <div class="col-6">
                     <p>ici voir pour faire le nombre de characters et argent total ramassé</p>
                 </div>
             </div>
             <div class="d-flex justify-content-center col-12">
                 <h2>Mes personnages</h2>
             </div>
-            <div class="col-12 mb-3 mt-5 d-flex justify-content-around">
-                {% for character in characters %}
-                    <div class="card text-white bg-dark mb-3" style="min-width: 15rem;">
-                        <div class="card-header d-flex justify-content-center">{{ character.pseudo }}</div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-center">
-                                <img class="classe-icon" src="{{ character.classe.linkImage }}" alt="">
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <h4 class="card-title" style="color: {{ character.classe.color }}">{{ character.classe }} - {{ character.iLvl }}</h4>
-                            </div>
-                            <p class="card-text">{{ character.comment }}</p>
-                            <a target="_blank" href="https://raider.io/characters/eu/archimonde/{{ character.pseudo }}">Raider.io</a>
-                        </div>
-                    </div>
-                {% endfor %}
+            <div class="col-12 mb-3 mt-5 d-flex justify-content-around flex-wrap">
+                {% include 'Components/character/card.html.twig' %}
             </div>
         </div>
     </div>
