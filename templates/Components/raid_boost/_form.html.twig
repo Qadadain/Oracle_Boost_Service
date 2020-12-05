@@ -1,0 +1,32 @@
+<div class="col-6 offset-3">
+    {{ form_start(form) }}
+    <div class="mt-5">
+        {{ form_label(form.customer) }}
+        {{ form_widget(form.customer) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.amount) }}
+        {{ form_widget(form.amount) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.comment) }}
+        {{ form_widget(form.comment) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.date) }}
+        {{ form_widget(form.date) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.armorType) }}
+        {{ form_widget(form.armorType, {'attr': {'class': 'd-flex justify-content-around'}}) }}
+    </div>
+    <div class="mt-3">
+        {{ form_label(form.raidOffer) }}
+        {{ form_widget(form.raidOffer) }}
+    </div>
+
+    <div class="d-flex justify-content-center mt-5 mb-5">
+        <button type="submit" class="btn">Ajouter</button>
+    </div>
+    {{ form_end(form) }}
+</div>

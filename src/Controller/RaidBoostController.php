@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\RaidBoost;
+use App\Form\RaidBoostType;
 use Doctrine\ORM\EntityManagerInterface;
 use Omines\DataTablesBundle\Adapter\ArrayAdapter;
 use Omines\DataTablesBundle\Column\DateTimeColumn;
@@ -78,6 +80,28 @@ class RaidBoostController extends AbstractController
 
         return $this->render('raid_boost/index.html.twig', [
             'datatable' => $datatable,
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="new")
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function new(Request $request, EntityManagerInterface $em): Response
+    {
+        $raidBoost = new RaidBoost();
+        $form = $this->createForm(RaidBoostType::class, $raidBoost);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($raidBoost);
+            $em->flush();
+            return $this->redirectToRoute('dungeon_boost_show');
+        }
+        return $this->render('raid_boost/new.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
