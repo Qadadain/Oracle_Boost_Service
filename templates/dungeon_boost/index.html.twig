@@ -7,8 +7,11 @@
         <div class="row d-flex justify-content-center">
             <h1>Dungeon Boost</h1>
         </div>
+        <div class="d-flex justify-content-end">
+            <a href="{{ path('dungeon_boost_new') }}"><img class="add-icon" src="{{ asset('build/images/add.png') }}" alt="logo-add"></a>
+        </div>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-2">
         <div id="dungeonBoost">Loading...</div>
     </div>
 {% endblock %}
