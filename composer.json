@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.7",
         "easycorp/easyadmin-bundle": "^3.1",
         "fzaninotto/faker": "^1.9",
+        "mervick/material-design-icons": "^2.2",
         "omines/datatables-bundle": "^0.5.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.1",

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\DungeonBoost;
+use App\Form\DungeonBoostType;
 use Doctrine\ORM\EntityManagerInterface;
 use Omines\DataTablesBundle\Adapter\ArrayAdapter;
 use Omines\DataTablesBundle\Column\DateTimeColumn;
@@ -16,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class DungeonBoostController extends AbstractController
 {
+
     /**
      * @Route("/", name="show")
      * @param EntityManagerInterface $em
@@ -30,7 +33,6 @@ class DungeonBoostController extends AbstractController
         $results = [];
         foreach ($dungeonBoosts as $dungeonBoost){
             $results[] = [
-                'id' => $dungeonBoost->getId(),
                 'customer' => $dungeonBoost->getCustomer(),
                 'amount' => $dungeonBoost->getAmount(),
                 'comment' => $dungeonBoost->getComment(),
@@ -45,9 +47,6 @@ class DungeonBoostController extends AbstractController
             ];
         }
         $datatable = $dataTableFactory->create()
-            ->add('id', TextColumn::class, [
-                'label' => 'id.'
-            ])
             ->add('customer', TextColumn::class, [
                 'label' => 'client.',
                 'orderable' => true
@@ -61,6 +60,7 @@ class DungeonBoostController extends AbstractController
                 'orderable' => true
             ])
             ->add('date', DateTimeColumn::class, [
+                'format' => 'd-m-Y',
                 'label' => 'Date.',
                 'orderable' => true
 
@@ -106,4 +106,26 @@ class DungeonBoostController extends AbstractController
             'datatable' => $datatable,
         ]);
     }
+
+    /**
+     * @Route ("/new", name="new")
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function new(Request $request, EntityManagerInterface $em): Response
+    {
+        $dungeonBoost = new DungeonBoost();
+        $form = $this->createForm(DungeonBoostType::class, $dungeonBoost);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($dungeonBoost);
+            $em->flush();
+            return $this->redirectToRoute('dungeon_boost_show');
+        }
+        return $this->render('dungeon_boost/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

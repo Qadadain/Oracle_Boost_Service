@@ -11,15 +11,15 @@
                         style="color: {{ character.classe.color }}">{{ character.classe }}
                         - {{ character.iLvl }}</h4>
                 </div>
+                <div>
                 <p class="card-text">{{ character.comment }}</p>
+                </div>
+                <div class="d-flex justify-content-around mt-2">
                 <a  target="_blank" href="https://raider.io/characters/eu/archimonde/{{ character.pseudo }}"><img class="raider-icon" src="{{ asset('build/images/raiderio.png') }}" alt=""></a>
                 {% if app.user is same as(character.user) and app.request.attributes.get('_route') is same as('profile_index') %}
-                    <span>
-                                <a href="{{ path('character_edit', {'id': character.id}) }}"><i class="material-icons edit-sheet">
-                                    edit
-                                </i></a>
-                            </span>
+                    <a href="{{ path('character_edit', {'id': character.id}) }}"><img class="edit-icon" src="{{ asset('build/images/edit.png') }}" alt="logo-add"></a>
                 {% endif %}
+                </div>
             </div>
         </div>
     </div>
