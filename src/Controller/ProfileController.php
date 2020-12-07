@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 /**
  * @Route("/profile", name="profile_")
  */
@@ -22,18 +23,23 @@ class ProfileController extends AbstractController
     {
         $user = $this->getUser();
         $characters = $entityManager->getRepository('App:Character')->findBy(['user' => $user]);
+        $dungeonBoostRepo = $entityManager->getRepository('App:DungeonBoost');
+
+        $sumUser = ($dungeonBoostRepo->sumBoostByUser($user)[0][1]);
+
         return $this->render('profile/index.html.twig', [
             'user' => $user,
             'characters' => $characters,
+            'sumUser' => $sumUser
         ]);
     }
 
-        /**
-         * @Route("/edit", name="edit")
-         * @param Request $request
-         * @return Response
-         */
-        public function edit(Request $request)
+    /**
+     * @Route("/edit", name="edit")
+     * @param Request $request
+     * @return Response
+     */
+    public function edit(Request $request): Response
     {
 
         $form = $this->createForm(UserType::class, $this->getUser());
