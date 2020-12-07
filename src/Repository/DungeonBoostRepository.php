@@ -19,32 +19,28 @@ class DungeonBoostRepository extends ServiceEntityRepository
         parent::__construct($registry, DungeonBoost::class);
     }
 
-    // /**
-    //  * @return DungeonBoost[] Returns an array of DungeonBoost objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public const MAXRESULT = 1;
 
-    /*
-    public function findOneBySomeField($value): ?DungeonBoost
+    /**
+     * @param $userId
+     * @return DungeonBoost[] Returns an array of DungeonBoost objects
+     */
+
+    public function sumBoostByUser($userId): array
     {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('db')
+            ->select('SUM(db.amount)')
+            ->innerJoin('App:Character', 'c')
+            ->innerJoin('App:User', 'u')
+            ->andWhere('db.tank = c.id')
+            ->orWhere('db.heal = c.id')
+            ->orWhere('db.dpsOne = c.id')
+            ->orWhere('db.dpsTwo = c.id')
+            ->andWhere('c.user = :userId')
+            ->setParameter('userId', $userId)
+            ->groupBy('u.pseudo')
+            ->setMaxResults(self::MAXRESULT)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }

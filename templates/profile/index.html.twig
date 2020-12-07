@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
+{% block title %}{{ user.pseudo }} profil!{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -14,7 +14,8 @@
                     <p>Email : {{ user.email }}</p>
                 </div>
                 <div class="col-6">
-                    <p>ici voir pour faire le nombre de characters et argent total ramassé</p>
+                    <p>PO total récolté </p>
+                    <p>{{ sumUser }}</p>
                 </div>
             </div>
             <div class="d-flex justify-content-center col-12">

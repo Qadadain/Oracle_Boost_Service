@@ -1,9 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container d-flex justify-content-center">
+    <div class="container">
         <div class="row">
+            <div class="col-12  d-flex justify-content-center">
             <h1 class="mt-5">Oracle Boost Info</h1>
+            </div>
+            <div class="col-6  d-flex justify-content-center flex-column">
+                <h4>Somme des boosts donjon</h4>
+                <p>{{ sumDungeonBoost }}</p>
+            </div>
+            <div class="col-6  d-flex justify-content-center flex-wrap">
+                <h4>Somme des boosts Raid</h4>
+                <p>{{ sumRaidBoost }}</p>
+            </div>
         </div>
     </div>
 {% endblock %}
