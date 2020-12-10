@@ -36,21 +36,20 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linktoRoute('Back To OBS', 'fa fa-home', 'home');
-        yield MenuItem::section('Utilisateur');
-        yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Character', 'fas fa-list', Character::class);
-        yield MenuItem::section('Boost');
-        yield MenuItem::linkToCrud('Dungeon Boost', 'fas fa-list', DungeonBoost::class);
-        yield MenuItem::linkToCrud('Raid Boost', 'fas fa-list', RaidBoost::class);
-        yield MenuItem::section('Information');
+        yield MenuItem::section('Utilisateur', 'fas fa-users-cog');
+        yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Character', 'fas fa-users', Character::class);
+        yield MenuItem::section('Boost', 'fas fa-file-invoice-dollar');
+        yield MenuItem::linkToCrud('Dungeon Boost', 'fas fa-dungeon', DungeonBoost::class);
+        yield MenuItem::linkToCrud('Raid Boost', 'fas fa-skull-crossbones', RaidBoost::class);
+        yield MenuItem::section('Information', 'fas fa-info-circle');
         yield MenuItem::linkToCrud('Raid Offer', 'fas fa-list', RaidOffer::class);
         yield MenuItem::linkToCrud('Information Boost', 'fas fa-list', InformationBoost::class);
-        yield MenuItem::section('Gestion');
-        yield MenuItem::linkToCrud('Armor Type', 'fas fa-list', ArmorType::class);
-        yield MenuItem::linkToCrud('Classe', 'fas fa-list', Classe::class);
-        yield MenuItem::linkToCrud('Dungeon', 'fas fa-list', Dungeon::class);
-        yield MenuItem::linkToCrud('Key Difficulty', 'fas fa-list', KeyDifficulty::class);
+        yield MenuItem::section('Gestion', 'fas fa-cogs');
+        yield MenuItem::linkToCrud('Armor Type', 'fas fa-tshirt', ArmorType::class);
+        yield MenuItem::linkToCrud('Classe', 'fas fa-hat-wizard', Classe::class);
+        yield MenuItem::linkToCrud('Dungeon', 'fas fa-dungeon', Dungeon::class);
+        yield MenuItem::linkToCrud('Key Difficulty', 'fas fa-key', KeyDifficulty::class);
     }
 }

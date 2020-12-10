@@ -30,7 +30,9 @@ class DungeonBoostType extends AbstractType
                 'label' => 'Commentaire :'
             ])
             ->add('date', DateType::class, [
-                'label' => 'Date :'
+                'label' => 'Date :',
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('armorType', EntityType::class, [
                 'label' => 'Armure :',

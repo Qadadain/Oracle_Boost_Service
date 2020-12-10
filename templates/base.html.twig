@@ -7,6 +7,7 @@
     {{ encore_entry_link_tags('app') }}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/datatables.min.css"/>
     <link rel="stylesheet" href="css/material-icons.css">
+    {{ encore_entry_link_tags('datepicker') }}
     {% block stylesheets %}{% endblock %}
     <header>
         {% block header %}
@@ -23,5 +24,6 @@
 </body>
 {{ encore_entry_script_tags('app') }}
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+{{ encore_entry_script_tags('datepicker') }}
 {% block javascripts %}{% endblock %}
 </html>
