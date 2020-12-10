@@ -16,11 +16,15 @@ class CharacterController extends AbstractController
 {
     /**
      * @Route("/", name="index")
+     * @param EntityManagerInterface $em
+     * @return Response
      */
-    public function index(): Response
+    public function index(EntityManagerInterface $em): Response
     {
+        $characters = $em->getRepository('App:Character')->findAll();
+
         return $this->render('character/index.html.twig', [
-            'controller_name' => 'CharacterController',
+            'characters' => $characters
         ]);
     }
 

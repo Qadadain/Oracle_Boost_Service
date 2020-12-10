@@ -14,6 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('raid_boost_show') }}">Boost Raid </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('character_index') }}">Boosteur</a>
+            </li>
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('admin') }}">Admin</a>
