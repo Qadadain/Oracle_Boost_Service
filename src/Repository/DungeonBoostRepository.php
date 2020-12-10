@@ -43,4 +43,21 @@ class DungeonBoostRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function countBoostByUser($userId): array
+    {
+        return $this->createQueryBuilder('db')
+            ->select('COUNT(db.amount)')
+            ->innerJoin('App:Character', 'c')
+            ->innerJoin('App:User', 'u')
+            ->andWhere('db.tank = c.id')
+            ->orWhere('db.heal = c.id')
+            ->orWhere('db.dpsOne = c.id')
+            ->orWhere('db.dpsTwo = c.id')
+            ->andWhere('c.user = :userId')
+            ->setParameter('userId', $userId)
+            ->groupBy('u.pseudo')
+            ->setMaxResults(self::MAXRESULT)
+            ->getQuery()
+            ->getResult();
+    }
 }

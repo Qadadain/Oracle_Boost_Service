@@ -55,20 +55,14 @@ class DungeonBoostController extends AbstractController
                 'label' => 'Montant.',
                 'orderable' => true
             ])
-            ->add('Comment', TextColumn::class, [
-                'label' => 'Commentaire.',
-                'orderable' => true
-            ])
             ->add('date', DateTimeColumn::class, [
                 'format' => 'd-m-Y',
                 'label' => 'Date.',
                 'orderable' => true
-
             ])
             ->add('armorType', TextColumn::class, [
                 'label' => 'Armure.',
                 'orderable' => true
-
             ])
             ->add('dungeon', TextColumn::class, [
                 'label' => 'Donjon.',

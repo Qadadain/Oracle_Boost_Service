@@ -6,6 +6,7 @@ use App\Repository\ArmorTypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArmorTypeRepository::class)
@@ -21,6 +22,8 @@ class ArmorType
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un Type d'armure.")
+     * @Assert\Length(max="255", maxMessage="Le type d'armure saisie {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères")
      */
     private $type;
 

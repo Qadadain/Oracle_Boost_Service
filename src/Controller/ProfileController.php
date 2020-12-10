@@ -26,11 +26,13 @@ class ProfileController extends AbstractController
         $dungeonBoostRepo = $entityManager->getRepository('App:DungeonBoost');
 
         $sumUser = ($dungeonBoostRepo->sumBoostByUser($user)[0][1]);
+        $countUser = ($dungeonBoostRepo->countBoostByUser($user)[0][1]);
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,
             'characters' => $characters,
-            'sumUser' => $sumUser
+            'sumUser' => $sumUser,
+            'countUser' => $countUser
         ]);
     }
 
