@@ -4,15 +4,23 @@
     <div class="container">
         <div class="row">
             <div class="col-12  d-flex justify-content-center">
-            <h1 class="mt-5">Oracle Boost Info</h1>
+                <h1 class="mt-5">Oracle Boost Info</h1>
             </div>
-            <div class="col-6  d-flex justify-content-center flex-column">
-                <h4>Somme des boosts donjon</h4>
-                <p>{{ sumDungeonBoost }}</p>
-            </div>
-            <div class="col-6  d-flex justify-content-center flex-wrap">
-                <h4>Somme des boosts Raid</h4>
-                <p>{{ sumRaidBoost }}</p>
+            <div class="d-flex justify-content-around col-12 mt-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Boosts donjon</div>
+                    <div class="card-body">
+                        <p>Argent récolté : {{ sumDungeonBoost }}</p>
+                        <p>Nombre de boost : {{ countDungeonBoost }}</p>
+                    </div>
+                </div>
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Boosts Raid</div>
+                    <div class="card-body">
+                        <p>Argent Récolté : {{ sumRaidBoost }}</p>
+                        <p>Nombre de boost : {{ countRaidBoost }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
