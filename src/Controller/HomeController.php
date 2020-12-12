@@ -18,6 +18,10 @@ class HomeController extends AbstractController
     {
         $dungeonBoosts =  $em->getRepository('App:DungeonBoost')->findAll();
         $raidBoosts =  $em->getRepository('App:RaidBoost')->findAll();
+        $informationGuilds = $em->getRepository('App:InformationGuild')->findAll();
+        $informationRaids = $em->getRepository('App:InformationRaid')->findAll();
+        $informationMembers = $em->getRepository('App:InformationMember')->findAll();
+        $variousLinks = $em->getRepository('App:VariousLink')->findAll();
 
         $countDungeonBoost = count($dungeonBoosts);
         $countRaidBoost = count($raidBoosts);
@@ -39,6 +43,10 @@ class HomeController extends AbstractController
             'sumRaidBoost' => $sumAmountRaidBoost,
             'countDungeonBoost' => $countDungeonBoost,
             'countRaidBoost' => $countRaidBoost,
+            'guildInformations' => $informationGuilds,
+            'memberInformations' => $informationMembers,
+            'raidInformations' => $informationRaids,
+            'variousLinks' => $variousLinks,
         ]);
     }
 }

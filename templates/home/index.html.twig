@@ -25,8 +25,39 @@
             <div class="d-flex justify-content-center col-12">
                 <h1>Oracle Information</h1>
             </div>
-            <div>
-
+            <div class="d-flex justify-content-around col-12 mt-5">
+                <div class="card border-success mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Information Guilde</div>
+                    <div class="card-body">
+                {% for guildInformation in guildInformations %}
+                        <a href="{{ guildInformation.link }}" target="_blank"><p class="card-text">{{ guildInformation.name }}</p></a>
+                {% endfor %}
+                    </div>
+                </div>
+                <div class="card border-danger mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Information Raid</div>
+                    <div class="card-body">
+                        {% for raidInformation in raidInformations %}
+                            <a href="{{ raidInformation.link }}" target="_blank"><p class="card-text">{{ raidInformation.name }}</p></a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card border-warning mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Information Membre</div>
+                    <div class="card-body">
+                        {% for memberInformation in memberInformations %}
+                        <a href="{{ memberInformation.link }}" target="_blank"><p class="card-text">{{ memberInformation.name }}</p></a>
+                         {% endfor %}
+                    </div>
+                </div>
+                <div class="card border-info mb-3" style="max-width: 20rem;">
+                    <div class="card-header">Liens divers</div>
+                    <div class="card-body">
+                        {% for variousLink in variousLinks %}
+                            <a href="{{ variousLink.link }}" target="_blank"><p class="card-text">{{ variousLink.name }}</p></a>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
