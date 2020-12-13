@@ -11,10 +11,18 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @return Response
+     */
+    public function index(): Response
+    {
+        return $this->render('home/index.html.twig');
+    }
+    /**
+     * @Route("/info", name="info")
      * @param EntityManagerInterface $em
      * @return Response
      */
-    public function index(EntityManagerInterface $em): Response
+    public function info(EntityManagerInterface $em): Response
     {
         $dungeonBoosts =  $em->getRepository('App:DungeonBoost')->findAll();
         $raidBoosts =  $em->getRepository('App:RaidBoost')->findAll();
@@ -37,7 +45,7 @@ class HomeController extends AbstractController
             $sumAmountRaidBoost += $raidBoost->getAmount();
         }
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/info.html.twig', [
             'user' => $this->getUser(),
             'sumDungeonBoost' => $sumAmountDungeonBoost,
             'sumRaidBoost' => $sumAmountRaidBoost,
