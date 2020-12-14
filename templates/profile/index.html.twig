@@ -13,7 +13,12 @@
                     <div class="card border-success mb-3">
                         <div class="card-header d-flex justify-content-center">Compte</div>
                         <div class="card-body">
-                            <p>Pseudo : {{ user.pseudo }}</p>
+                            <div class="d-flex justify-content-between">
+                                <p>Pseudo : {{ user.pseudo }}</p>
+                                <a href="{{ path('profile_edit') }}"><img class="edit-icon-profile"
+                                                                          src="{{ asset('build/images/edit.png') }}"
+                                                                          alt="logo-add"></a>
+                            </div>
                             <p>Email : {{ user.email }}</p>
                         </div>
                     </div>
@@ -23,11 +28,12 @@
                         <div class="card-header d-flex justify-content-center">Argent pour Bébé</div>
                         <div class="card-body">
                             <p>PO gagnée : {{ sumUser }}</p>
-                            <p>Nombre de boost : {{ countUser}} </p>
+                            <p>Nombre de boost : {{ countUser }} </p>
                         </div>
                     </div>
                 </div>
             </div>
+            {% if is_granted('ROLE_BOOSTER') or is_granted('ROLE_ADMIN') %}
             <div class="d-flex justify-content-center col-12">
                 <h2>Mes personnages</h2>
             </div>
@@ -39,6 +45,7 @@
             <div class="col-12 mb-3 mt-5 d-flex justify-content-around flex-wrap">
                 {% include 'Components/character/card.html.twig' %}
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -8,17 +8,18 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
+            {% if is_granted('ROLE_BOOSTER') or is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('dungeon_boost_show') }}">Boost MM+
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('raid_boost_show') }}">Boost Raid </a>
+                <a class="nav-link" href="{{ path('dungeon_boost_show') }}">Boost MM+</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('character_index') }}">Boosteur</a>
             </li>
+            {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('raid_boost_show') }}">Boost Raid </a>
+            </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('admin') }}">Admin</a>
                 </li>

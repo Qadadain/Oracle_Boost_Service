@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
- * @Route("/dungeon-boost", name="dungeon_boost_")
+ * @Route("/donjon-boost", name="dungeon_boost_")
  */
 class DungeonBoostController extends AbstractController
 {

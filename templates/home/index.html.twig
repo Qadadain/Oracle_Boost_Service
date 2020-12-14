@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center flex-column">
-                    {% if is_granted(['ROLE_BOOSTER', 'ROLE_ADMIN']) %}
+                    {% if is_granted('ROLE_BOOSTER') or is_granted('ROLE_ADMIN') %}
                 <a class="d-flex justify-content-center flex-column" href="{{ path('info') }}">
                 <img
                         class="oracle-svg" src="{{ asset('build/images/Oracle.svg') }}" alt="">

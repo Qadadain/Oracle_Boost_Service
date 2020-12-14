@@ -8,9 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use function Composer\Autoload\includeFile;
 
 /**
- * @Route("/profile", name="profile_")
+ * @Route("/profil", name="profile_")
  */
 class ProfileController extends AbstractController
 {
@@ -25,9 +26,13 @@ class ProfileController extends AbstractController
         $characters = $entityManager->getRepository('App:Character')->findBy(['user' => $user]);
         $dungeonBoostRepo = $entityManager->getRepository('App:DungeonBoost');
 
-        $sumUser = isset($dungeonBoostRepo->sumBoostByUser($user)[0][1]);
-        $countUser = isset($dungeonBoostRepo->countBoostByUser($user)[0][1]);
+        $sumUser = (!isset($dungeonBoostRepo->sumBoostByUser($user)[0][1])
+            ? $sumUser = 0
+            : $sumUser = $dungeonBoostRepo->sumBoostByUser($user)[0][1]);
 
+        $countUser = (!isset($dungeonBoostRepo->countBoostByUser($user)[0][1])
+            ? $countUser = 0
+            : $countUser = $dungeonBoostRepo->countBoostByUser($user)[0][1]);
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,
