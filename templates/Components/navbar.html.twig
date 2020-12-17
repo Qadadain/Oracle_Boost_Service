@@ -8,7 +8,7 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            {% if is_granted('ROLE_BOOSTER') or is_granted('ROLE_ADMIN') %}
+            {% if is_granted('ROLE_MEMBRE') or is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('dungeon_boost_show') }}">Boost MM+</a>
             </li>

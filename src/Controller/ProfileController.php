@@ -28,7 +28,7 @@ class ProfileController extends AbstractController
 
         $sumUser = (!isset($dungeonBoostRepo->sumBoostByUser($user)[0][1])
             ? $sumUser = 0
-            : $sumUser = $dungeonBoostRepo->sumBoostByUser($user)[0][1]);
+            : $sumUser = $dungeonBoostRepo->sumBoostByUser($user)[0][1]/4);
 
         $countUser = (!isset($dungeonBoostRepo->countBoostByUser($user)[0][1])
             ? $countUser = 0

@@ -36,6 +36,6 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/raid-boost, roles: ROLE_ADMIN }
-         - { path: ^/donjon-boost, roles: [ROLE_ADMIN, ROLE_BOOSTER] }
-         - { path: ^/joueur,roles: [ROLE_ADMIN, ROLE_BOOSTER] }
+         - { path: ^/donjon-boost, roles: [ROLE_ADMIN, ROLE_MEMBRE] }
+         - { path: ^/joueur,roles: [ROLE_ADMIN, ROLE_MEMBRE] }
         # - { path: ^/profile, roles: ROLE_USER }

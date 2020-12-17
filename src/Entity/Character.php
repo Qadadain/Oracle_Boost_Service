@@ -24,7 +24,7 @@ class Character
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="Veuillez saisir un Pseudo.")
-     * @Assert\Length(max="255", maxMessage="Le Pseudo : {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères")
+     * @Assert\Length(max="100", maxMessage="Le Pseudo : {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères")
      */
     private $pseudo;
 
