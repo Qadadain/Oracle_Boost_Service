@@ -6,6 +6,7 @@ use App\Repository\CharacterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CharacterRepository::class)
@@ -22,11 +23,15 @@ class Character
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Veuillez saisir un Pseudo.")
+     * @Assert\Length(max="100", maxMessage="Le Pseudo : {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères")
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Veuillez saisir un iLvl.")
+     * @Assert\Length(max="3", maxMessage="L'ilvl : {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères")
      */
     private $iLvl;
 

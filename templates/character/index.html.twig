@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les membres{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="d-flex justify-content-center col-12 mt-5">
+                <h2>Membres</h2>
+            </div>
+            <div class="col-12 mb-3 mt-5 d-flex justify-content-around flex-wrap">
+                {% include 'Components/character/card.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

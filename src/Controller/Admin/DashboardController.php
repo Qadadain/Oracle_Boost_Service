@@ -8,10 +8,14 @@ use App\Entity\Classe;
 use App\Entity\Dungeon;
 use App\Entity\DungeonBoost;
 use App\Entity\InformationBoost;
+use App\Entity\InformationGuild;
+use App\Entity\InformationMember;
+use App\Entity\InformationRaid;
 use App\Entity\KeyDifficulty;
 use App\Entity\RaidBoost;
 use App\Entity\RaidOffer;
 use App\Entity\User;
+use App\Entity\VariousLink;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -36,16 +40,25 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Character', 'fas fa-list', Character::class);
-        yield MenuItem::linkToCrud('Dungeon Boost', 'fas fa-list', DungeonBoost::class);
-        yield MenuItem::linkToCrud('Raid Boost', 'fas fa-list', RaidBoost::class);
+        yield MenuItem::linktoRoute('Back To OBS', 'fa fa-home', 'home');
+        yield MenuItem::section('Utilisateur', 'fas fa-users-cog');
+        yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Character', 'fas fa-users', Character::class);
+        yield MenuItem::section('Boost', 'fas fa-file-invoice-dollar');
+        yield MenuItem::linkToCrud('Dungeon Boost', 'fas fa-dungeon', DungeonBoost::class);
+        yield MenuItem::linkToCrud('Raid Boost', 'fas fa-skull-crossbones', RaidBoost::class);
+        yield MenuItem::section('Information', 'fas fa-info-circle');
         yield MenuItem::linkToCrud('Raid Offer', 'fas fa-list', RaidOffer::class);
         yield MenuItem::linkToCrud('Information Boost', 'fas fa-list', InformationBoost::class);
-        yield MenuItem::linkToCrud('Armor Type', 'fas fa-list', ArmorType::class);
-        yield MenuItem::linkToCrud('Classe', 'fas fa-list', Classe::class);
-        yield MenuItem::linkToCrud('Dungeon', 'fas fa-list', Dungeon::class);
-        yield MenuItem::linkToCrud('Key Difficulty', 'fas fa-list', KeyDifficulty::class);
+        yield MenuItem::section('Gestion', 'fas fa-cogs');
+        yield MenuItem::linkToCrud('Info Guilde', 'fas fa-cogs', InformationGuild::class);
+        yield MenuItem::linkToCrud('Info Raid', 'fas fa-cogs', InformationRaid::class);
+        yield MenuItem::linkToCrud('Info Membres', 'fas fa-cogs', InformationMember::class);
+        yield MenuItem::linkToCrud('Liens divers', 'fas fa-cogs', VariousLink::class);
+        yield MenuItem::section('Gestion', 'fas fa-cogs');
+        yield MenuItem::linkToCrud('Armor Type', 'fas fa-tshirt', ArmorType::class);
+        yield MenuItem::linkToCrud('Classe', 'fas fa-hat-wizard', Classe::class);
+        yield MenuItem::linkToCrud('Dungeon', 'fas fa-dungeon', Dungeon::class);
+        yield MenuItem::linkToCrud('Key Difficulty', 'fas fa-key', KeyDifficulty::class);
     }
 }
