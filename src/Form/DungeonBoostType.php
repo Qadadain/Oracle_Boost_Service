@@ -27,7 +27,8 @@ class DungeonBoostType extends AbstractType
                 'label' => 'Montant :'
             ])
             ->add('comment', TextType::class, [
-                'label' => 'Commentaire :'
+                'label' => 'Commentaire :',
+                'required' => false,
             ])
             ->add('date', DateType::class, [
                 'label' => 'Date :',

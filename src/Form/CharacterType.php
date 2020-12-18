@@ -23,8 +23,9 @@ class CharacterType extends AbstractType
             ->add('iLvl', IntegerType::class, [
                 'label' => 'Ilvl :'
             ])
-            ->add('comment', TextEditorType::class, [
-                'label' => 'Commentaire :'
+            ->add('comment', TextType::class, [
+                'label' => 'Commentaire :',
+                'required' => false,
             ])
             ->add('classe', EntityType::class, [
                 'label' => 'Classe :',
